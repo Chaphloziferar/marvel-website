@@ -1,18 +1,41 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// Redux
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducers } from './app.reducers';
+
+// Effects
+import { CharacterEffect } from './effects/character.effect';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CardComponent } from './components/card/card.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot(),
+    EffectsModule.forFeature([
+      CharacterEffect
+    ]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    })
   ],
-  providers: [],
+  providers: [
+    CharacterEffect
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
