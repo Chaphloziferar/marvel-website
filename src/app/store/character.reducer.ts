@@ -21,5 +21,17 @@ export const characterReducer = createReducer(
     ...state,
     isLoading: false,
     error: error
-  }))
+  })),
+
+  on(fromCharacter.selectCharacterAction, (state, {character}) => ({
+    ...state,
+    isLoading: false,
+    selectedCharacter: character
+  })),
+
+  on(fromCharacter.selectCharacterActionFailure, (state, {error}) => ({
+    ...state,
+    isLoading: false,
+    error: error
+  })),
 )

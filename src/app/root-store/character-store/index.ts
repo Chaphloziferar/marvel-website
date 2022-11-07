@@ -13,6 +13,11 @@ export const getCharacters = createSelector(
   (state: CharacterState) => state.characters
 );
 
+export const getSelectedCharacter = createSelector(
+  CharacterFeature,
+  (state: CharacterState) => state.selectedCharacter
+);
+
 export const getLoading = createSelector(
   CharacterFeature,
   (state: CharacterState) => state.isLoading
@@ -25,6 +30,7 @@ export const getError = createSelector(
 
 export const characterSelectors = {
   getCharacters,
+  getSelectedCharacter,
   getLoading,
   getError
 }

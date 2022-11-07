@@ -5,6 +5,9 @@ export enum ActionTypes {
   LOAD_CHARACTERS = 'Load Characters',
   LOAD_CHARACTERS_SUCCESS = 'Load Characters Success',
   LOAD_CHARACTERS_FAILURE = 'Load Characters Failure',
+
+  SELECT_CHARACTER = 'Select Character',
+  SELECT_CHARACTER_FAILURE = 'Select Character Failure',
 }
 
 export const loadCharactersAction = createAction(
@@ -25,8 +28,24 @@ export const loadCharactersActionFailure = createAction(
   }>()
 );
 
+export const selectCharacterAction = createAction(
+  ActionTypes.SELECT_CHARACTER,
+  props<{
+    character: Character
+  }>()
+);
+
+export const selectCharacterActionFailure = createAction(
+  ActionTypes.SELECT_CHARACTER_FAILURE,
+  props<{
+    error: String
+  }>()
+);
+
 export const listCharacterActions = {
   loadCharactersAction,
   loadCharactersActionSuccess,
-  loadCharactersActionFailure
+  loadCharactersActionFailure,
+  selectCharacterAction,
+  selectCharacterActionFailure
 }
