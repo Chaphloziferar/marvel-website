@@ -8,6 +8,8 @@ export enum ActionTypes {
 
   SELECT_CHARACTER = 'Select Character',
   SELECT_CHARACTER_FAILURE = 'Select Character Failure',
+
+  SHOW_MODAL = "Show Modal",
 }
 
 export const loadCharactersAction = createAction(
@@ -42,10 +44,18 @@ export const selectCharacterActionFailure = createAction(
   }>()
 );
 
+export const showModalAction = createAction(
+  ActionTypes.SHOW_MODAL,
+  props<{
+    showModal: boolean
+  }>()
+);
+
 export const listCharacterActions = {
   loadCharactersAction,
   loadCharactersActionSuccess,
   loadCharactersActionFailure,
   selectCharacterAction,
-  selectCharacterActionFailure
+  selectCharacterActionFailure,
+  showModalAction
 }

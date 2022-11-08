@@ -25,6 +25,7 @@ export class CardComponent implements OnInit {
 
   selectCharacter(character: Character){
     this.store$.dispatch(listCharacterActions.selectCharacterAction({character: character}));
+    this.store$.dispatch(listCharacterActions.showModalAction({showModal: true}));
   }
 
 }

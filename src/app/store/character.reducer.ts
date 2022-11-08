@@ -34,4 +34,10 @@ export const characterReducer = createReducer(
     isLoading: false,
     error: error
   })),
+
+  on(fromCharacter.showModalAction, (state, {showModal}) => ({
+    ...state,
+    isLoading: false,
+    showModal: showModal
+  })),
 )

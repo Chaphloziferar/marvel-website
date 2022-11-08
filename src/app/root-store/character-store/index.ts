@@ -28,9 +28,15 @@ export const getError = createSelector(
   (state: CharacterState) => state.error
 );
 
+export const getShowModal = createSelector(
+  CharacterFeature,
+  (state: CharacterState) => state.showModal
+);
+
 export const characterSelectors = {
   getCharacters,
   getSelectedCharacter,
   getLoading,
-  getError
+  getError,
+  getShowModal
 }

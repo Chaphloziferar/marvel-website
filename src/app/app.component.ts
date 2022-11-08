@@ -16,8 +16,10 @@ import { AppState } from './app.reducers';
 })
 export class AppComponent {
   characters$: Observable<Character[]>;
+  showModal$: Observable<boolean>;
 
   characters: Character[] = [];
+  showModal: boolean = false;
 
   constructor(
     private store$: Store<AppState>
@@ -26,9 +28,14 @@ export class AppComponent {
     this.store$.dispatch(listCharacterActions.loadCharactersAction());
 
     this.characters$ = this.store$.select(characterSelectors.getCharacters);
+    this.showModal$ = this.store$.select(characterSelectors.getShowModal);
 
     this.characters$.subscribe(characters => {
       this.characters = characters
+    });
+
+    this.showModal$.subscribe(showModal => {
+      this.showModal = showModal
     });
   }
 }
